@@ -1,0 +1,7 @@
+Bridge mqtt:broker:hivemqbroker [ host="broker.emqx.io", port=1883] {
+  Thing mqtt:topic:hivemqbroker:LabBulbThing "Light_In_Lab" (mqtt:broker:hivemqbroker){
+    Channels:
+      Type switch : Bulb   [ stateTopic="state/isu/lab/bulb", commandTopic="cmnd/isu/lab/bulb", on="on", off="off"]
+      Type number : Info [stateTopic="da/state",commandTopic="da/state"]
+      }
+ }

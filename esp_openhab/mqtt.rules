@@ -1,0 +1,13 @@
+
+rule "MyRule1"
+
+when
+    Item LightInLab_NumberValue changed
+then
+    val mqttActions = getActions("mqtt", "mqtt:broker:hivemqbroker")
+    if (LightInLab_NumberValue.state <500) {
+    mqttActions.publishMQTT("da/command","ON")
+    } else {
+    mqttActions.publishMQTT("da/command","OFF")
+    }
+end
